@@ -85,8 +85,8 @@ function Get-HPDrivers {
             Start-Sleep -Seconds 5
         }
 
-        if (!$ShowSoftware) { $AvailableDrivers = Get-SoftpaqList -OsVer 23H2 -Category BIOS, Driver }
-        if ($ShowSoftware) { $AvailableDrivers = Get-SoftpaqList -OsVer 23H2 -Category BIOS, Driver, Diagnostic, Dock, Software, Utility }
+        if (!$ShowSoftware) { $AvailableDrivers = Get-SoftpaqList -Category BIOS, Driver }
+        if ($ShowSoftware) { $AvailableDrivers = Get-SoftpaqList -Category BIOS, Driver, Diagnostic, Dock, Software, Utility }
 
         # check available drivers
         if (!$NoPrompt) { $SpList = $AvailableDrivers | Select-Object -Property id, Name, Version, Size, ReleaseDate | Out-GridView -Title "Select driver(s):" -OutputMode Multiple }
